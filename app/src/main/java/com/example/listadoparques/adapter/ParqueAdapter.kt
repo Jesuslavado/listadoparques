@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.listadoparques.Parque
 import com.example.listadoparques.R
 
-class ParqueAdapter (val parqueList: List<Parque>) : RecyclerView.Adapter<ParqueViewHolder>(){
+class ParqueAdapter (var parqueList: List<Parque>) : RecyclerView.Adapter<ParqueViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ParqueViewHolder {
         val layoutInflater=LayoutInflater.from(parent.context)
         return ParqueViewHolder(layoutInflater.inflate(R.layout.itemparques,parent,false))
@@ -19,6 +19,11 @@ class ParqueAdapter (val parqueList: List<Parque>) : RecyclerView.Adapter<Parque
     override fun onBindViewHolder(holder: ParqueViewHolder, position: Int) {
         val item= parqueList[position]
         holder.render(item)    }
+
+    fun actualizarParques(listaparque: List<Parque>) {
+        this.parqueList = listaparque
+        notifyDataSetChanged()
+    }
 
 
 
